@@ -9,6 +9,7 @@
 2. [What happens when the array exceeds its capacity and gets too big?](#)
 
 **Definition of an Array and its main features**
+
 **Mechanics of arrays**
 
 - Insesrt
