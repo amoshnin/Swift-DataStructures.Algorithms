@@ -1,10 +1,19 @@
-# What is Big O Notation?
+# Table of contents
 
-Big O notation (aka Big O) is a way assessing the relative performance of a data structure or algorithm usually along two axis: time and space.
+1. [What Big O notation is and how it works?](#)
+2. [Common runtimes used when talking about performance of algorithms](#)
+3. [Strategies for improving performance of algorithms](#)
 
-## Dominant Operations
+# What Big O notation is and how it works?
 
-The way we determine an algorithms Big O, is to look at the worse case performance of it's dominant operations.
+Big O notation is the language Computer Scientist's use when comparing the relative performance of algorithms/data structures. Performance is comapred in terms of:
+
+- time (how fast algorithm goes)
+- space (how much memory algorithm takes)
+
+# Dominant operations (runtimes of Big O)
+
+> Note: The way we determine an algorithms Big O, is to look at the worse case performance of it's dominant operations.
 
 ### Constant time - O(1)
 
@@ -15,7 +24,7 @@ func constantTime(_ n: Int) -> Int {
 }
 ```
 
-Algorithms that don't do a lot of looping, or simply return the result of some simple calculation are said to have *constant time* or *O(1)*. Meaning these operations are very quick. 
+Algorithms that don't do a lot of looping, or simply return the result of some simple calculation are said to have _constant time_ or _O(1)_. Meaning these operations are very quick.
 
 ### Linear time - O(n)
 
@@ -32,7 +41,7 @@ func linearTime(_ A: [Int]) -> Int {
 
 As soon as the performance of the algorithm becomes dependent on the size of the input being passed in, we can no longer say it is constant.
 
-If the length of time it takes to process is a straight line, we refer to this is *linear time*. Meaning the the length of time it takes is directly proportional to the size of the input.
+If the length of time it takes to process is a straight line, we refer to this is _linear time_. Meaning the the length of time it takes is directly proportional to the size of the input.
 
 > Note: Even though the loop could return immediately if the first value of the array is `0`, when evaluating Big O we always look for worst case performance. That's when this is still O(n) with a best case of O(1).
 
@@ -50,7 +59,7 @@ func logarithmicTime(_ N: Int) -> Int {
 }
 ```
 
-Algorithms like BSTs (Binary Search Trees) are extremely fast because they half their results each time they look for a result. This halfing is logarithmic which we refer to as *O(log n)*.
+Algorithms like BSTs (Binary Search Trees) are extremely fast because they half their results each time they look for a result. This halfing is logarithmic which we refer to as _O(log n)_.
 
 ### Quadratic time - O(n^2)
 
@@ -68,6 +77,8 @@ func quadratic(_ n: Int) -> Int {
 ```
 
 When you embed one for loop within another, you get a quadratic effect applied to your algorithm which can really slow things down. These are OK for getting the right answer, they just aren't the most performant.
+
+# Strategies for improving performance of algorithms
 
 When you compare these operations on a [graph](https://www.bigocheatsheet.com/), you start to get a good feel for their relative performance.
 
@@ -114,13 +125,13 @@ On the other hand if we were OK sacrificing some space, we could get a better ti
 ```swift
 // Convert to hash and lookup via other index
 func commonItemsHash(_ A: [Int], _ B: [Int]) -> Bool {
-    
+
     // Still looping...but not nested - O(2n) vs O(n^2)
     var hashA = [Int: Bool]()
     for a in A { // O(n)
         hashA[a] = true
     }
-    
+
     // Now lookup in the hash to see if elements of B exist
     for b in B {
         if hashA[b] == true {
